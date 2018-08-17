@@ -6,6 +6,21 @@ $sideBar = $separator."pages".$separator."components".$separator."sidebar.php";
 $footer = $separator."pages".$separator."components".$separator."footer.php";
 $title = $separator."pages".$separator."components".$separator."title.php";
 /***************************************************** */
+
+function buildPath(){
+  $domain =  'http://'.$_SERVER['HTTP_HOST'];
+  $subdomain = $_SERVER['PHP_SELF'];
+  $url = $domain.$subdomain;
+  $path = str_replace($domain.'/coprsec', "", $url);
+  $slash = substr_count($path, '/')-1;
+  $buildPath = '';
+  $i = 0;
+  while ($i < $slash) {
+    $i++;
+    $buildPath = $buildPath."../";
+  }
+  return $buildPath;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

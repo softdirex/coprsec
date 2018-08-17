@@ -1,11 +1,27 @@
 <?php
 /* Variables de uso general                            */
+$bg_sp=buildPath();
 $separator = "/";
 $navBar = "..".$separator."components".$separator."navbar.php";
-$sideBar = "..".$separator."components".$separator."subsidebar.php";
+$sideBar = "..".$separator."components".$separator."sidebar.php";
 $footer = "..".$separator."components".$separator."footer.php";
 $title = "..".$separator."components".$separator."title.php";
 /***************************************************** */
+
+function buildPath(){
+  $domain =  'http://'.$_SERVER['HTTP_HOST'];
+  $subdomain = $_SERVER['PHP_SELF'];
+  $url = $domain.$subdomain;
+  $path = str_replace($domain.'/coprsec', "", $url);
+  $slash = substr_count($path, '/')-1;
+  $buildPath = '';
+  $i = 0;
+  while ($i < $slash) {
+    $i++;
+    $buildPath = $buildPath."../";
+  }
+  return $buildPath;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,16 +32,16 @@ $title = "..".$separator."components".$separator."title.php";
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include($title);?>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="<?php echo $bg_sp;?>vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="<?php echo $bg_sp;?>vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="<?php echo $bg_sp;?>vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="<?php echo $bg_sp;?>css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="<?php echo $bg_sp;?>images/favicon.png" />
 </head>
 
 <body>
@@ -45,8 +61,21 @@ $title = "..".$separator."components".$separator."title.php";
                   <h4 class="card-title">Lista de Usuarios</h4>
                   
                   <p class="card-description">
+                  <div class="form-group">
                     Crear nuevo usuario
-                    <button type="button" class="btn btn-success btn-rounded btn-fw">Nuevo Usuario</button>
+                      <form action="nuevo.jsp"
+                            name="form1"
+                            id="form1"
+                            method="post"> 
+                            <input type="button" 
+                            class="btn btn-success btn-rounded btn-fw"
+                            value="Crear usuario" 
+                            id="nuevo"
+                            name="nuevo" 
+                            onclick= "document.form1.action = 'nuevo-usuario.php'; 
+                            document.form1.submit()" />
+                      </form>
+                      </div>
                     <div class="form-group">
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -80,7 +109,7 @@ $title = "..".$separator."components".$separator."title.php";
                       <tbody>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-1.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-1.png" alt="image" />
                           </td>
                           <td>
                             Herman Beck
@@ -99,7 +128,7 @@ $title = "..".$separator."components".$separator."title.php";
                         </tr>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-2.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-2.png" alt="image" />
                           </td>
                           <td>
                             Messsy Adam
@@ -118,7 +147,7 @@ $title = "..".$separator."components".$separator."title.php";
                         </tr>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-3.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-3.png" alt="image" />
                           </td>
                           <td>
                             John Richards
@@ -137,7 +166,7 @@ $title = "..".$separator."components".$separator."title.php";
                         </tr>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-4.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-4.png" alt="image" />
                           </td>
                           <td>
                             Peter Meggik
@@ -156,7 +185,7 @@ $title = "..".$separator."components".$separator."title.php";
                         </tr>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-1.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-1.png" alt="image" />
                           </td>
                           <td>
                             Edward
@@ -175,7 +204,7 @@ $title = "..".$separator."components".$separator."title.php";
                         </tr>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-2.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-2.png" alt="image" />
                           </td>
                           <td>
                             John Doe
@@ -194,7 +223,7 @@ $title = "..".$separator."components".$separator."title.php";
                         </tr>
                         <tr>
                           <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-3.png" alt="image" />
+                            <img src="<?php echo $bg_sp;?>images/faces-clipart/pic-3.png" alt="image" />
                           </td>
                           <td>
                             Henry Tom
@@ -230,17 +259,17 @@ $title = "..".$separator."components".$separator."title.php";
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <script src="<?php echo $bg_sp;?>vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?php echo $bg_sp;?>vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/misc.js"></script>
+  <script src="<?php echo $bg_sp;?>js/off-canvas.js"></script>
+  <script src="<?php echo $bg_sp;?>js/misc.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/dashboard.js"></script>
+  <script src="<?php echo $bg_sp;?>js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
 

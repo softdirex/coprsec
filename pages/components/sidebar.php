@@ -1,11 +1,14 @@
+<?php
+$bg_sp=buildPath();
 
+?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="images/faces/face1.jpg" alt="profile image">
+                  <img src="<?php echo $bg_sp?>images/faces/face1.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Richard V.Welsh</p>
@@ -47,7 +50,7 @@
             <div class="collapse" id="ui-config">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/config/nuevo-usuario.php">Usuarios</a>
+                  <a class="nav-link" href="pages/config/usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/typography.html">Empresas</a>
